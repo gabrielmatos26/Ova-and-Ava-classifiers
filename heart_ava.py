@@ -46,7 +46,7 @@ def main():
     while len(classes) > 1:
         current_class = classes.pop(0)
         for c in classes:
-            d = pd.concat([dTrain,targetTrain], axis=1, ignore_index=True)
+            d = pd.concat([dTrain,targetTrain], axis=1, ignore_index=True)sito
             d = d.reset_index(drop=True)
             current_group = pd.concat([d[d[13]==current_class], d[d[13]==c]], axis=0, ignore_index=False)
             y = current_group[13].copy()
@@ -57,10 +57,6 @@ def main():
             print('Training model for classes ', current_class, 'and ', c, '...')
             clf = SVC().fit(x, y)
             clfs.append(clf)
-            # clf.fit(dTrain, targetTrain)
-            # pred = clf.predict(x)
-            # for i in range(pred.shape[0]):
-            #     votes[x.iloc[[i]].index[0], pred[i]] += 1
     for clf in clfs:
         dTest = scaler.transform(dTest)
         cols = [i for i in range(dTest.shape[1])]
